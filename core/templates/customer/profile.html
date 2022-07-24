@@ -52,7 +52,7 @@ firebase.initializeApp(firebaseConfig);
 
         <div id="recaptcha-container"></div>
 
-        <div  id="get-code" class="input-group mb-3">
+        <div  id="get-code" class="input-group mb-3 {% if request.user.customer.phone_number %} d-none {% endif %}">
           <input type="text" class="form-control" placeholder="Your Phone number"  >
           <div class="input-group-append">
             <button class="btn btn-warning" type="button" >Send Code</button>
@@ -66,58 +66,88 @@ firebase.initializeApp(firebaseConfig);
           </div>
         </div>
 
+         <div id="change-phone" class="input-group mb-3 {% if not request.user.customer.phone_number %} d-none {% endif %}">
+      <input type="text" class="form-control" disabled value="{{ request.user.customer.phone_number }}">
+      <div class="input-group-append">
+        <button class="btn btn-warning" type="button">Change</button>
+      </div>
+    </div>
+
 
     </div>
 </div>
 
 <script>
 
-    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    function onVerify(idToken) {
+    var form = document.createElement("form");
+    form.method = "POST";
 
-    $("#get-code button").on('click',function(){
+    var element1 = document.createElement("input");
+    element1.name = "id_token";
+    element1.value = idToken;
+    form.appendChild(element1);
+
+    var element2 = document.createElement("input");
+    element2.name = "action";
+    element2.value = "update_phone";
+    form.appendChild(element2);
+
+    var element3 = document.createElement("input");
+    element3.name = "csrfmiddlewaretoken";
+    element3.value = "{{ csrf_token }}";
+    form.appendChild(element3);
+
+    document.body.appendChild(form);
+    form.submit();
+  }
+
+  window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+    'size': 'invisible'
+  });
+
+  $("#get-code button").on('click', function () {
     const phoneNumber = $("#get-code input").val();
     console.log(phoneNumber);
 
-
-
     firebase.auth().signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier)
-    .then((confirmationResult) => {
-      // SMS sent. Prompt user to type the code from the message, then sign the
-      // user in with confirmationResult.confirm(code).
-      console.log(confirmationResult);
-      window.confirmationResult = confirmationResult;
+      .then((confirmationResult) => {
+        // SMS sent. Prompt user to type the code from the message, then sign the
+        // user in with confirmationResult.confirm(code).
+        console.log(confirmationResult);
+        window.confirmationResult = confirmationResult;
 
-          $("#get-code").addClass("d-none");
-          $("#verify-code").removeClass("d-none");
-
-    }).catch((error) => {
-      toast(error.message,'error');
-    });
-
-
+        $("#get-code").addClass("d-none");
+        $("#verify-code").removeClass("d-none");
+      }).catch((error) => {
+        // Error; SMS not sent
+        toast(error.message, 'error');
+      });
 
 
-    });
+  });
 
-
-    $("#verify-code button").on('click',function(){
+  $("#verify-code button").on('click', function () {
     const code = $("#verify-code input").val();
 
     confirmationResult.confirm(code).then((result) => {
-  // User signed in successfully.
-  const user = result.user;
-  console.log(user.phoneNumber);
+      // User signed in successfully.
+      const user = result.user;
+      console.log(user.phoneNumber);
 
-  user.getIdToken().then(function(idToken){
-    console.log(idToken);
+      user.getIdToken().then(function (idToken) {
+        onVerify(idToken);
+      });
+    }).catch((error) => {
+      // User couldn't sign in (bad verification code?)
+      toast(error.message, 'error');
     });
-}).catch((error) => {
-  // User couldn't sign in (bad verification code?)
-  toast(error.message,'error');
-});
+  });
 
-
-    })
+  $("#change-phone button").on('click', function () {
+    $("#change-phone").addClass("d-none");
+    $("#get-code").removeClass("d-none");
+  })
 
 </script>
 {% endblock %}

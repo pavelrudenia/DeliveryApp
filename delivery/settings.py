@@ -156,3 +156,12 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'pavelrudeniaaa@gmail.com'
 EMAIL_HOST_PASSWORD='Pavel2002'
 DEFAULT_FROM_EMAIL = 'DeliveryApp <no-reply@delivery.localhost>'
+
+
+FIREBASE_ADMIN_CREDENTIAL = os.path.join(BASE_DIR,"deliveryapp-b24e4-firebase-adminsdk-m1fma-6d2dc68d91.json")
+
+STRIPE_API_PUBLIC_KEY='pk_test_51LNFJnC1arWGs47VmaCKuNJur9L9O66FniQvebE7usNCGA76eyR6lq7pkxhxVSG9y7GIsAkYUkA5cp1OrzqoEJOI009UJdRwQU'
+STRIPE_API_SECRET_KEY='sk_test_51LNFJnC1arWGs47Vie1DN702iUZQUu2uEtnLDWwetp5O5iDl4XT0TFUQmbt7aA8by2ggnMhecOyWFUhOoXbdaTWR008vqcJxhz'
+
+
+GOOGLE_MAP_API_KEY="AIzaSyAIlvbtx00myOYRBPdHrsvhBm2VJaM7phs"

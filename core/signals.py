@@ -17,10 +17,10 @@ def send_welcome_email(sender, instance, created, **kwargs):
             }
         )
 
-        send_mail(
-            'Welcome to DeliveryApp',
-            body,
-            settings.DEFAULT_FROM_EMAIL,
-            [instance.email],
-            fail_silently=False,
-        )
+        # send_mail(
+        #     'Welcome to DeliveryApp',
+        #     body,
+        #     settings.DEFAULT_FROM_EMAIL,
+        #     [instance.email],
+        #     fail_silently=False,
+        # )
