@@ -25,7 +25,7 @@ SECRET_KEY = '%)-4f#okzjg_q3_*sy*y%#4xon6vl6_m4&67_yqkt81fvju&!e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'bootstrap4',
     'social_django',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -165,3 +166,26 @@ STRIPE_API_SECRET_KEY='sk_test_51LNFJnC1arWGs47Vie1DN702iUZQUu2uEtnLDWwetp5O5iDl
 
 
 GOOGLE_MAP_API_KEY="AIzaSyAIlvbtx00myOYRBPdHrsvhBm2VJaM7phs"
+
+PAYPAL_MODE = "sandbox"
+PAYPAL_CLIENT_ID = "AW7-FkakUjrIvQPU2Ix9Nt2CMXQnsZRqGBKJbpp0Gw5vVeUpI4c4KiwYlOjHEzLUYTiqYcen4m4hLF7P"
+PAYPAL_CLIENT_SECRET = "ENhuFY7f2zA0ncU-J76siYqrDCecOZj0M95kd7vGSF91MOqSSELSElUunrOTF_gJPoeaN0oG0rWTw3Cm"
+
+NOTIFICATION_URL = "https://mysterious-eyrie-73146.herokuapp.com/ "
+#
+ASGI_APPLICATION = "delivery.asgi.application"
+
+
+# Channels
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1',6379)],
+        },
+    },
+}
+
+# Activate Django Heroku
+import django_on_heroku
+django_on_heroku.settings(locals())
