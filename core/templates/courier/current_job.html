@@ -75,7 +75,7 @@
     const jobSocket = new WebSocket(
       "ws{% if request.get_host != 'localhost:8000' %}s{% endif %}://" + window.location.host + "/ws/jobs/{{ job.id }}/"
     );
-    console.log(jobSocket)
+
     navigator.geolocation.watchPosition(
       pos => {
         var courierPostion = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
@@ -98,11 +98,9 @@
               courier_lat: pos.coords.latitude,
               courier_lng: pos.coords.longitude,
             }
-
           }))
         } catch (error) {
           console.log(error);
-
         }
       },
       pos => console.log(pos))

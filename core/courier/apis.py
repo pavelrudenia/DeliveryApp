@@ -36,6 +36,8 @@ def current_job_update_api(request, id):
     job.status = Job.DELIVERING_STATUS
     job.save()
 
+    print(job.pickup_photo.url)
+
     try:
       layer = get_channel_layer()
       async_to_sync(layer.group_send)("job_" + str(job.id), {

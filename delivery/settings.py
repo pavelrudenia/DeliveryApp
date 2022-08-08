@@ -171,7 +171,7 @@ PAYPAL_MODE = "sandbox"
 PAYPAL_CLIENT_ID = "AW7-FkakUjrIvQPU2Ix9Nt2CMXQnsZRqGBKJbpp0Gw5vVeUpI4c4KiwYlOjHEzLUYTiqYcen4m4hLF7P"
 PAYPAL_CLIENT_SECRET = "ENhuFY7f2zA0ncU-J76siYqrDCecOZj0M95kd7vGSF91MOqSSELSElUunrOTF_gJPoeaN0oG0rWTw3Cm"
 
-NOTIFICATION_URL = "https://mysterious-eyrie-73146.herokuapp.com/ "
+NOTIFICATION_URL = "https://frozen-plains-85335.herokuapp.com/"
 #
 ASGI_APPLICATION = "delivery.asgi.application"
 

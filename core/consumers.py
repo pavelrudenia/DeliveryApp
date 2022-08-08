@@ -16,26 +16,28 @@ class JobConsumer(WebsocketConsumer):
 
     self.accept()
 
-  def disconnect(self, close_code):
+
+  def disconnect(self):
     # Leave room group
     async_to_sync(self.channel_layer.group_discard)(
-      self.job_group_name,
+      self.room_group_name,
       self.channel_name
     )
 
 
-  def receive(self, text_data):
+  def receive(self,text_data):
     text_data_json = json.loads(text_data)
     job = text_data_json['job']
 
-    # print("Job", job)
+    print("Job",job)
+
 
     if job.get('courier_lat') and job.get('courier_lng'):
       self.scope['user'].courier.lat = job['courier_lat']
       self.scope['user'].courier.lng = job['courier_lng']
       self.scope['user'].courier.save()
 
-    # Send message to job group
+      # Send message to room group
     async_to_sync(self.channel_layer.group_send)(
       self.job_group_name,
       {
@@ -44,11 +46,11 @@ class JobConsumer(WebsocketConsumer):
       }
     )
 
-# Receive message from job group
-  def job_update(self, event):
+
+  def job_update(self,event):
     job = event['job']
 
-    # Send message to WebSocket
+    #send message to WebSocket
     self.send(text_data=json.dumps({
-      'job': job
+      'job':job
     }))

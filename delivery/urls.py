@@ -52,6 +52,7 @@ urlpatterns = [
          (TemplateView.as_view(template_name="firebase-messaging-sw.js", content_type="application/javascript", ))),
 ]
 
+
 websocket_urlpatterns = [
     path('ws/jobs/<job_id>/', consumers.JobConsumer.as_asgi())
 ]
