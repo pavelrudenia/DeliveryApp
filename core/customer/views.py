@@ -42,7 +42,7 @@ def profile_page(request):
                 user_form.save()
                 customer_form.save()
 
-                messages.success(request, 'Your profile has been updated')
+                messages.success(request, 'Ваш профиль был обновлен')
                 return redirect(reverse('customer:profile'))
 
         elif request.POST.get('action') == 'update_password':
@@ -51,7 +51,7 @@ def profile_page(request):
                 user = password_form.save()
                 update_session_auth_hash(request, user)
 
-                messages.success(request, 'Your password has been updated')
+                messages.success(request, 'Ваш пароль успешно обновлен')
                 return redirect(reverse('customer:profile'))
 
         elif request.POST.get('action') == 'update_phone':
@@ -135,7 +135,7 @@ def create_job_page(request):
     ).exists()
 
     if has_current_job:
-        messages.warning(request, "You currently have a processing job.")
+        messages.warning(request, "У вас уже есть текущий заказ")
         return redirect(reverse('customer:current_jobs'))
 
     creating_job = Job.objects.filter(customer=current_customer, status=Job.CREATING_STATUS).last()
@@ -177,12 +177,15 @@ def create_job_page(request):
                     duration = r.json()['rows'][0]['elements'][0]['duration']['value']
                     creating_job.distance = round(distance / 1000, 2)
                     creating_job.duration = int(duration / 60)
-                    creating_job.price = creating_job.distance * 1.25  # $1 per km
+                    creating_job.price = creating_job.distance * 1.25 *3  # $1 per km
+                    print(creating_job.price)
+                    creating_job.price = round(creating_job.price, 2)
+                    print(creating_job.price)
                     creating_job.save()
 
                 except Exception as e:
                     print(e)
-                    messages.error(request, "Unfortunately, we do not support shipping at this distance")
+                    messages.error(request, "К сожалению, мы не поддерживаем доставку на такое расстояние")
 
                 return redirect(reverse('customer:create_job'))
 
@@ -227,7 +230,7 @@ def create_job_page(request):
                         tokens=registration_tokens
                     )
                     response = messaging.send_multicast(message)
-                    print('{0} messages were sent successfully'.format(response.success_count))
+                    print('{0} сообщения были успешно отправлены'.format(response.success_count))
 
                     return redirect(reverse('customer:home'))
 

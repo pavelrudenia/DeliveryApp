@@ -33,22 +33,22 @@
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-header">
-                    JOB SUMMARY
+                    КРАТКОЕ ОПИСАНИЕ ЗАКАЗА
                 </div>
                 <div class="card-body">
                     {% if not job %}
-                    <p>A summary of your job information will appear here</p>
+                    <p>Здесь появится краткая информация о вашем заказе</p>
                     {% else %}
 
                     {% if step > 1 %}
                     <h4>{{ job.name }}</h4>
-                    <span>{{job.quantity}} Item</span><br>
-                    <span>{{job.get_size_display}} Job</span>
+                    <span>{{job.quantity}} Предмет</span><br>
+                    <span>{{job.get_size_display}} Заказ</span>
                     {% endif %}
 
                      {% if step > 2 %}
                     <hr>
-                    <p class="text-secondary"><small><b>PICKUP</b></small></p>
+                    <p class="text-secondary"><small><b>Место получения заказа</b></small></p>
                     <h4>{{ job.pickup_name }}</h4>
                     <span>{{job.pickup_address}}</span><br>
 
@@ -56,7 +56,7 @@
 
                     {% if step > 3 %}
                     <hr>
-                    <p class="text-secondary"><small><b>Delivery</b></small></p>
+                    <p class="text-secondary"><small><b>Место доставки товара</b></small></p>
                     <h4>{{ job.delivery_name }}</h4>
                     <span>{{job.delivery_address}}</span><br>
 
@@ -75,32 +75,32 @@
                 <div class="card-body">
                       <ul class="nav nav-pills nav-justified align-items-center mb-3" id="pills-tab" role="tablist">
                           <li class="nav-item">
-                            <a class="{% if step == 1 %}active{% endif %}" id="pills-info-tab" data-toggle="pill" href="#pills-info" role="tab" aria-controls="pills-info" aria-selected="true">Item Info</a>
+                            <a class="{% if step == 1 %}active{% endif %}" id="pills-info-tab" data-toggle="pill" href="#pills-info" role="tab" aria-controls="pills-info" aria-selected="true">Информация о заказе</a>
                           </li>
                           <i class="fas fa-chevron-right"></i>
                           <li class="nav-item">
-                            <a class="{% if step == 2 %}active{% endif %}" id="pills-pickup-tab" data-toggle="pill" href="#pills-pickup" role="tab" aria-controls="pills-pickup" aria-selected="false">Pickup</a>
+                            <a class="{% if step == 2 %}active{% endif %}" id="pills-pickup-tab" data-toggle="pill" href="#pills-pickup" role="tab" aria-controls="pills-pickup" aria-selected="false">Получение</a>
                           </li>
                           <i class="fas fa-chevron-right"></i>
                           <li class="nav-item">
-                            <a class="{% if step == 3 %}active{% endif %}" id="pills-delivery-tab" data-toggle="pill" href="#pills-delivery" role="tab" aria-controls="pills-delivery" aria-selected="false">Delivery</a>
+                            <a class="{% if step == 3 %}active{% endif %}" id="pills-delivery-tab" data-toggle="pill" href="#pills-delivery" role="tab" aria-controls="pills-delivery" aria-selected="false">Доставка</a>
                           </li>
                           <i class="fas fa-chevron-right"></i>
                           <li class="nav-item">
-                            <a  class="{% if step == 4 %}active{% endif %}" id="pills-payment-tab" data-toggle="pill" href="#pills-payment" role="tab" aria-controls="pills-payment" aria-selected="false">Payment</a>
+                            <a  class="{% if step == 4 %}active{% endif %}" id="pills-payment-tab" data-toggle="pill" href="#pills-payment" role="tab" aria-controls="pills-payment" aria-selected="false">Оплата</a>
                           </li>
                           <i class="fas fa-chevron-right"></i>
                     </ul>
                 </div>
             </div>
             <!--   Step forms   -->
-            <b>CREATE A JOB</b>
+            <b>Создать заказ</b>
             <div class="tab-content" id="pills-tabContent">
                  <!--   Step 1   -->
               <div class="tab-pane fade {%if step == 1 %}show active{% endif %}" id="pills-info" role="tabpanel" aria-labelledby="pills-info-tab">
-                  <h1>Item Info</h1>
+                  <h1>Информация о заказе</h1>
                   <form  method="POST" enctype="multipart/form-data">
-                      <b class="text-secondary">Item Information</b><br>
+                      <b class="text-secondary">Информация о товаре</b><br>
                       <div class="card bg-white mt-2 mb-5">
                           <div class="card-body">
                               {% csrf_token %}
@@ -108,14 +108,14 @@
                           </div>
                       </div>
                       <input type="hidden" name="step" value="1">
-                      <button type="submit" class="btn btn-warning">Save & Continue</button>
+                      <button type="submit" class="btn btn-warning">Сохранить и продолжить</button>
                   </form>
               </div>
                 <!--   Step 2   -->
               <div class="tab-pane fade {%if step == 2 %}show active{% endif %}" id="pills-pickup" role="tabpanel" aria-labelledby="pills-pickup-tab">
                    <h1>Pickup</h1>
                   <form  method="POST" enctype="multipart/form-data">
-                      <b class="text-secondary">Pickup Information</b><br>
+                      <b class="text-secondary">Информация о месте получения заказа</b><br>
                       <div class="card bg-white mt-2 mb-5">
                           <div class="card-body">
                               <div class="row">
@@ -138,15 +138,15 @@
                           </div>
                       </div>
                       <input type="hidden" name="step" value="2">
-                      <button type="button" class="bnt btn-outline-warning" onclick="$('#pills-info-tab').tab('show')">Back</button>
-                      <button type="submit" class="btn btn-warning">Save & Continue</button>
+                      <button type="button" class="bnt btn-outline-warning" onclick="$('#pills-info-tab').tab('show')">Назад</button>
+                      <button type="submit" class="btn btn-warning">Сохранить и продолжить</button>
                   </form>
               </div>
                 <!--   Step 3   -->
               <div class="tab-pane fade {%if step == 3 %}show active{% endif %}" id="pills-delivery" role="tabpanel" aria-labelledby="pills-delivery-tab">
                    <h1>Delivery</h1>
                   <form  method="POST" enctype="multipart/form-data">
-                      <b class="text-secondary">Delivery Information</b><br>
+                      <b class="text-secondary">Информация о месте доставки товара</b><br>
                       <div class="card bg-white mt-2 mb-5">
                           <div class="card-body">
                               <div class="row">
@@ -169,33 +169,33 @@
                           </div>
                       </div>
                       <input type="hidden" name="step" value="3">
-                      <button type="button" class="bnt btn-outline-warning" onclick="$('#pills-info-tab').tab('show')">Back</button>
-                      <button type="submit" class="btn btn-warning">Save & Continue</button>
+                      <button type="button" class="bnt btn-outline-warning" onclick="$('#pills-info-tab').tab('show')">Назад</button>
+                      <button type="submit" class="btn btn-warning">Сохранить и продолжить</button>
                   </form>
               </div>
                 <!--   Step 4   -->
               <div class="tab-pane fade {%if step == 4 %}show active{% endif %}" id="pills-payment" role="tabpanel" aria-labelledby="pills-payment-tab">
-                   <h1>Payment</h1>
+                   <h1>Оплата</h1>
 <form method="POST">
-            <b class="text-secondary">Payment Method</b>
+            <b class="text-secondary">Способ оплаты</b>
             <div class="card bg-white mt-2 mb-5">
               <div class="card-body">
                 {% csrf_token %}
                 <div class="form-group">
-                  <label>Your Credit/Debit Card</label>
+                  <label>Ваша кредитная/дебетовая карта</label>
                   <input class="form-control" value="**** **** **** {{ request.user.customer.stripe_card_last4 }}"
                     disabled>
                 </div>
                 <div class="form-group">
-                  <label>Price</label>
-                  <input class="form-control" value="${{ job.price }}" disabled>
+                  <label>Стоимость</label>
+                  <input class="form-control" value="BYN {{ job.price }}" disabled>
                 </div>
               </div>
             </div>
             <input type="hidden" name="step" value="4">
             <button type="button" class="btn btn-outline-warning"
-              onclick="$('#pills-delivery-tab').tab('show');">Back</button>
-            <button type="submit" class="btn btn-warning">Create Job</button>
+              onclick="$('#pills-delivery-tab').tab('show');">Назад</button>
+            <button type="submit" class="btn btn-warning">Создать заказ</button>
           </form>
               </div>
                 

@@ -20,8 +20,8 @@
 
   <div class="text-center">
     <div class="btn-group mt-1 mb-1 align-item-center" role="group">
-      <a href="{% url 'courier:current_job' %}" class="btn btn-outline-warning">Current Job</a>
-      <a href="{% url 'courier:archived_jobs' %}" class="btn btn-warning">Archived Jobs</a>
+      <a href="{% url 'courier:current_job' %}" class="btn btn-outline-warning">Текущая работа</a>
+      <a href="{% url 'courier:archived_jobs' %}" class="btn btn-warning">Архивные работы</a>
     </div>
   </div>
 
@@ -38,8 +38,8 @@
             <div class="flex-grow-1 mr-2">
 
               <small class="text-success">
-                <i class="fas fa-car"></i> <span>{{ job.distance }}</span> km
-                <i class="far fa-clock ml-2"></i> <span>{{ job.duration }}</span> mins
+                <i class="fas fa-car"></i> <span>{{ job.distance }}</span> км
+                <i class="far fa-clock ml-2"></i> <span>{{ job.duration }}</span> минут
               </small>
 
               <div class="d-flex align-items-center mt-2">
@@ -53,7 +53,7 @@
               </div>
 
             </div>
-            $<h3>{{ job.price }}</h3>
+            BYN<h3>{{ job.price }}</h3>
 
           </div>
         </div>
@@ -65,7 +65,7 @@
   {% else %}
 
   <div id="main" class="text-center">
-    <p>You have no job now. Let's pick a new one.</p>
+    <p>Сейчас у тебя нет работы. Давайте выберем что-нибудь новое.</p>
   </div>
 
   {% endif %}

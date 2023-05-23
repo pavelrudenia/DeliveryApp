@@ -61,18 +61,12 @@
 
 
     </script>
-   { %
-            if messages %
-        }
+   { % if messages % }
 
-        { %
-            for message in messages %
-        }
-        toast('{{ message }}', '{{ message.tags }}'); { % endfor %
-        }
+        { % for message in messages % }
+        toast('{{ message }}', '{{ message.tags }}'); { % endfor % }
 
-        { % endif %
-        }
+        { % endif % }
 </body>
 
 </html>

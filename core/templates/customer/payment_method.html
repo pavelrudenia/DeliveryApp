@@ -40,14 +40,14 @@
 
 {% if not request.user.customer.stripe_payment_method_id %}
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-  Let's add your Credit or Debit card to <strong>Create a Job</strong>!
+  Давайте добавим вашу кредитную или дебетовую карту  <strong>Создать заказ</strong>!
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 {% endif %}
 
-<b class="text-secondary">Your Credit/Debit Card</b>
+<b class="text-secondary">Ваша кредитная/дебетовая карта</b>
 
 <div class="card bg-white mt-2 mb-5">
   <div class="card-body">
@@ -59,7 +59,7 @@
       <div class="input-group-append">
         <form method="POST">
           {% csrf_token %}
-          <button type="submit" class="btn btn-danger">Remove</button>
+          <button type="submit" class="btn btn-danger">Удалить</button>
         </form>
       </div>
     </div>
@@ -68,7 +68,7 @@
     <form id="setup-form" data-secret="{{ client_secret }}">
       <div id="card-element"></div>
       <button id="card-button" class="btn btn-warning mt-3" type="button">
-        Save Card
+        Сохранить карту
       </button>
     </form>
     {% endif %}

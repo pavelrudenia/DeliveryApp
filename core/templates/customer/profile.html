@@ -22,7 +22,7 @@ firebase.initializeApp(firebaseConfig);
 
 {% block main %}
 <!-- Basic Information -->
-<b class="text-secondary">Basic Information</b><br />
+<b class="text-secondary">Основная информация</b><br />
 <div class="card bg-white mt-2 mb-5">
   <div class="card-body">
     <form method="POST" enctype="multipart/form-data">
@@ -30,26 +30,26 @@ firebase.initializeApp(firebaseConfig);
       {% bootstrap_form user_form %}
       {% bootstrap_form customer_form %}
       <input type="hidden" name="action" value="update_profile">
-      <button type="submit" class="btn btn-warning">Save</button>
+      <button type="submit" class="btn btn-warning">Сохранить</button>
     </form>
   </div>
 </div>
 
 <!-- Password -->
-<b class="text-secondary">Change Password</b><br />
+<b class="text-secondary">Сменить пароль</b><br />
 <div class="card bg-white mt-2 mb-5">
   <div class="card-body">
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       {% bootstrap_form password_form %}
       <input type="hidden" name="action" value="update_password">
-      <button type="submit" class="btn btn-warning">Save</button>
+      <button type="submit" class="btn btn-warning">Сохранить</button>
     </form>
   </div>
 </div>
 
 <!-- Phone number -->
-<b class="text-secondary">Phone Number</b><br />
+<b class="text-secondary">Номер телефона</b><br />
 <div class="card bg-white mt-2 mb-5">
   <div class="card-body">
 
@@ -58,21 +58,21 @@ firebase.initializeApp(firebaseConfig);
     <div id="get-code" class="input-group mb-3 {% if request.user.customer.phone_number %} d-none {% endif %}">
       <input type="text" class="form-control" placeholder="Your phone number">
       <div class="input-group-append">
-        <button class="btn btn-warning" type="button">Send Code</button>
+        <button class="btn btn-warning" type="button">Отправить код</button>
       </div>
     </div>
 
     <div id="verify-code" class="input-group mb-3 d-none">
       <input type="text" class="form-control" placeholder="Verification code">
       <div class="input-group-append">
-        <button class="btn btn-warning" type="button">Verify Code</button>
+        <button class="btn btn-warning" type="button">Проверьте код</button>
       </div>
     </div>
 
     <div id="change-phone" class="input-group mb-3 {% if not request.user.customer.phone_number %} d-none {% endif %}">
       <input type="text" class="form-control" disabled value="{{ request.user.customer.phone_number }}">
       <div class="input-group-append">
-        <button class="btn btn-warning" type="button">Change</button>
+        <button class="btn btn-warning" type="button">Изменить</button>
       </div>
     </div>
 

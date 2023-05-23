@@ -53,13 +53,13 @@ def payout_to_courier(modeladmin, request, queryset):
     if payout.create():
       for t in transaction_querysets:
         t.update(status=Transaction.OUT_STATUS)
-      messages.success(request, "payout[%s] created successfully" % (payout.batch_header.payout_batch_id))
+      messages.success(request, "оплата произведенна успещно" % (payout.batch_header.payout_batch_id))
     else:
       messages.error(request, payout.error)
   except Exception as e:
     messages.error(request, str(e))
 
-payout_to_courier.short_description = "Payout to Couriers"
+payout_to_courier.short_description = "Отправить вознаграждение"
 
 class CourierAdmin(admin.ModelAdmin):
   list_display = ['user_full_name', 'paypal_email', 'balance']

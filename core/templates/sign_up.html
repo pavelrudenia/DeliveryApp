@@ -11,9 +11,9 @@
           <h4 class="text-center text-uppercase mb-3">
             <b>
               {% if request.GET.next != '/courier/' %}
-              Customer
+              Пользователь
               {% else %}
-              Courier
+              Курьер
               {% endif %}
             </b>
           </h4>
@@ -21,13 +21,13 @@
           <form method="POST">
             {% csrf_token %}
             {% bootstrap_form form %}
-            <button type="submit" class="btn btn-warning btn-block">Sign Up</button>
+            <button type="submit" class="btn btn-warning btn-block">Зарегистрироваться</button>
             <p class="text-center mt-3">
-              Already have an account? <a href="/sign-in/?next={{ request.GET.next }} "><b>Sign In</b></a>
+              Уже есть аккаунт? <a href="/sign-in/?next={{ request.GET.next }} "><b>Войти в систему</b></a>
             </p>
             <hr>
-            <a href="{% url 'social:begin' 'facebook' %}?next={{ request.GET.next }}"
-              class="btn btn-outline-primary btn-block">Sign In with Facebook</a>
+          <!--  <a href="{% url 'social:begin' 'facebook' %}?next={{ request.GET.next }}"
+              class="btn btn-outline-primary btn-block">Sign In with Facebook</a> -->
           </form>
         </div>
       </div>

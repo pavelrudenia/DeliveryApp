@@ -47,9 +47,9 @@
 <div id="upload-step">
   <img id="photo">
   <div class="buttons">
-    <a id="retake-button" class="btn btn-light" href="javascript:void(retake_photo())">Retake</a>
+    <a id="retake-button" class="btn btn-light" href="javascript:void(retake_photo())">Переделать фото</a>
     <a id="upload-button" class="btn btn-warning" href="javascript:void(upload_photo())">
-      Upload {% if job.status == 'picking' %}Pickup{% else %}Drop-off{% endif %} Photo
+      Загрузить {% if job.status == 'picking' %}фото при получении{% else %}фото при доставке{% endif %} заказа
     </a>
   </div>
 </div>
@@ -64,7 +64,7 @@
 
   <div class="buttons">
     <a href="javascript:void(take_photo())" class="btn btn-warning">
-      Take {% if job.status == 'picking' %}Pickup{% else %}Drop-off{% endif %} Photo
+      Сделать {% if job.status == 'picking' %}фото при получении{% else %}фото при доставке{% endif %} заказа
     </a>
   </div>
 </div>

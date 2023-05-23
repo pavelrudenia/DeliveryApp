@@ -155,7 +155,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'pavelrudeniaaa@gmail.com'
-EMAIL_HOST_PASSWORD='Pavel2002'
+EMAIL_HOST_PASSWORD='********'
 DEFAULT_FROM_EMAIL = 'DeliveryApp <no-reply@delivery.localhost>'
 
 

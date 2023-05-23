@@ -20,7 +20,7 @@
 <nav class="navbar {% if not request.user.is_authenticated %} navbar-expand-lg {% endif %}navbar-light bg-warning">
 
 
-    <a  class="navbar-brand" style="color: #000000" href="/">Delivery</a>
+    <a  class="navbar-brand" style="color: #000000" href="/">Служба доставки малогабаритных товаров</a>
 {% if not request.user.is_authenticated %}
     <button class="navbar-toggler" type="button"   data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span >
@@ -31,17 +31,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <li class="nav-item {% if request.GET.next != '/courier/' %}active{% endif %}">
-          <a class="nav-link active" style="color: #000000" aria-current="page" href="/sign-in/?next=/customer/">Customer</a>
+          <a class="nav-link active" style="color: #000000" aria-current="page" href="/sign-in/?next=/customer/">Пользователь</a>
         </li>
        <li class="nav-item {% if request.GET.next == '/courier/' %}active{% endif %}">
-          <a class="nav-link active" style="color: #000000" aria-current="page" href="/sign-in/?next=/courier/">Courier</a>
+          <a class="nav-link active" style="color: #000000" aria-current="page" href="/sign-in/?next=/courier/">Курьер</a>
         </li>
       </ul>
     </div>
     {% else %}
     <form class="form-inline">
         <span class="mr-4">{{ request.user.get_full_name|title}}</span>
-        <a href="/sign-out" class="btn btn-outline-dark">Sign Out</a>
+        <a href="/sign-out" class="btn btn-outline-dark">Выйти</a>
     </form>
 
 {% endif %}
@@ -52,8 +52,9 @@
 
  <span class="navbar-toggler-icon"></span>
 
-<footer class="text-center mt-5 mb-">
-    &copy; Павел Руденя 12.07.2022
+<footer style="position: absolute;
+bottom: 0;left: 100;"  class="text-center mt-5 mb-">
+
 </footer>
 <script src="https://unpkg.com/bootoast@1.0.1/dist/bootoast.min.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/bootoast@1.0.1/dist/bootoast.min.css">

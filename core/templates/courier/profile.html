@@ -12,29 +12,29 @@
 
 
 <div class="mt-4 p-2 mb-5">
-  <b class="text-secondary">PAYOUT</b>
+  <b class="text-secondary">Данные для вывода вознаграждения</b>
   <a href="{% url 'courier:payout_method' %}" class="btn btn-outline-secondary btn-block btn-md mt-2">
-    Setup
+    Установить
   </a>
 </div>
 
 
 <div class="mt-2 p-2">
-  <b class="text-secondary">SUMMARY</b>
+  <b class="text-secondary">Информация об аккаунте</b>
   <hr />
 
   <div class="d-flex text-center">
     <div class="flex-grow-1">
-      <h4 class="text-success">${{ total_earnings }}</h4>
-      <span class="text-secondary">Total Earnings</span>
+      <h4 class="text-success">BYN {{ total_earnings }}</h4>
+      <span class="text-secondary">Общий заработок</span>
     </div>
     <div class="flex-grow-1">
-      <h4 class="text-success">{{ total_jobs }} Jobs</h4>
-      <span class="text-secondary">Completed</span>
+      <h4 class="text-success">{{ total_jobs }} Работ</h4>
+      <span class="text-secondary">Выполненно</span>
     </div>
     <div class="flex-grow-1">
-      <h4 class="text-danger">{{ total_km }} Km</h4>
-      <span class="text-secondary">Driven</span>
+      <h4 class="text-danger">{{ total_km }} Км</h4>
+      <span class="text-secondary">Пройдено</span>
     </div>
   </div>
   <hr />
@@ -43,7 +43,7 @@
 <div class="p-2">
   <a href="/sign-out/" class="btn btn-block btn-danger btn-md mt-2">
     <i class="fas fa-sign-out-alt mr-1"></i>
-    Sign Out
+    Выйти
   </a>
 </div>
 

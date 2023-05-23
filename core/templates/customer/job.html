@@ -134,7 +134,7 @@
     {% if job.status == 'processing' %}
     <form method="POST" class="float-right">
       {% csrf_token %}
-      <button type="submit" class="btn btn-warning">Cancel Job</button>
+      <button type="submit" class="btn btn-warning">Отменить заказ</button>
     </form>
     {% endif %}
 
@@ -143,19 +143,19 @@
 
     <div class="row">
       <div class="col-lg-3">
-        <small class="text-secondary">CATEGORY</small><br />
+        <small class="text-secondary">Категории</small><br />
         <span><b>{{ job.category.name }}</b></span>
       </div>
       <div class="col-lg-3">
-        <small class="text-secondary">SIZE</small><br />
+        <small class="text-secondary">Размер</small><br />
         <span><b>{{ job.get_size_display }}</b></span>
       </div>
       <div class="col-lg-3">
-        <small class="text-secondary">PRICE</small><br />
+        <small class="text-secondary">Стоимость</small><br />
         <span><b>${{ job.price }}</b></span>
       </div>
       <div class="col-lg-3">
-        <small class="text-secondary">QUANTITY</small><br />
+        <small class="text-secondary">Количество</small><br />
         <span><b>{{ job.quantity }}</b></span>
       </div>
     </div>
@@ -163,16 +163,16 @@
 </div>
 
 <!-- DELIVERY INFORMATION -->
-<b class="text-secondary">DELIVERY INFORMATION</b><br />
+<b class="text-secondary">Информация о доставке</b><br />
 <div class="card bg-white mt-2 mb-5">
   <div class="card-body p-4">
 
     <h4 class="mb-3">
-      Pickup
+      Подобрать
     </h4>
     <div class="row">
       <div class="col-lg-4">
-        <b>Address</b><br />
+        <b>Адрес</b><br />
         <span>{{ job.pickup_address }}</span>
       </div>
       <div class="col-lg-4">
@@ -183,7 +183,7 @@
         {% if job.pickup_photo %}
         <img src="{{ job.pickup_photo.url }}" class="rounded-lg photo" width="130" height="130">
         {% else %}
-        <div class="photo-blank">Pickup Photo Will Appear Here</div>
+        <div class="photo-blank">Фотография подобранного заказа появится здесь</div>
         {% endif %}
       </div>
 
@@ -192,7 +192,7 @@
     <hr class="my-4" />
 
     <h4 class="mb-3">
-      Delivery
+      Доставка
     </h4>
     <div class="row">
       <div class="col-lg-4">
@@ -207,7 +207,7 @@
         {% if job.delivery_photo %}
         <img src="{{ job.delivery_photo.url }}" class="rounded-lg photo" width="130" height="130">
         {% else %}
-        <div class="photo-blank">Delivery Photo Will Appear Here</div>
+        <div class="photo-blank">Фотография доставки появится здесь</div>
         {% endif %}
       </div>
 
@@ -218,7 +218,7 @@
 
 <!-- MAP AREA -->
 <div class="d-flex justify-content-between">
-  <b class="text-secondary">TRACK DELIVERY</b>
+  <b class="text-secondary">ОТСЛЕЖИВАНИЕ ДОСТАВКИ</b>
   <div>
     <span id="job_status" class="badge badge-warning">{{ job.get_status_display }}</span>
   </div>

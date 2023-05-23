@@ -36,13 +36,13 @@ class Category(models.Model):
 
 class Job(models.Model):
   SMALL_SIZE = "small"
-  MEDIUM_SIZE = "medium"
-  LARGE_SIZE = "large"
+  #MEDIUM_SIZE = "medium"
+  #LARGE_SIZE = "large"
   SIZES = (
-    (SMALL_SIZE, 'Small'),
-    (MEDIUM_SIZE, 'Medium'),
-    (LARGE_SIZE, 'Large'),
-  )
+    (SMALL_SIZE, 'Размер упаковки не превышает 60х60х36см, вес не более 25 кг.'))
+  #  (MEDIUM_SIZE, 'Medium'),
+  #  (LARGE_SIZE, 'Large'),
+  #)
 
   CREATING_STATUS = 'creating'
   PROCESSING_STATUS = 'processing'
@@ -66,7 +66,7 @@ class Job(models.Model):
   name = models.CharField(max_length=255)
   description = models.CharField(max_length=255)
   category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
-  size = models.CharField(max_length=20, choices=SIZES, default=MEDIUM_SIZE)
+  size = models.CharField(max_length=20, default=SMALL_SIZE)
   quantity = models.IntegerField(default=1)
   photo = models.ImageField(upload_to='job/photos/')
   status = models.CharField(max_length=20, choices=STATUSES, default=CREATING_STATUS)
