@@ -22,9 +22,9 @@ class JobCreateStep1Form(forms.ModelForm):
 
 
 class JobCreateStep2Form(forms.ModelForm):
-    pickup_address=forms.CharField(required=True)
-    pickup_name = forms.CharField(required=True)
-    pickup_phone = forms.CharField(required=True)
+    pickup_address=forms.CharField(required=True,label ='Адрес получения посылки',help_text="Адрес получения посылки")
+    pickup_name = forms.CharField(required=True,label ='Дополнительные данные',help_text="Дополнительные данные")
+    pickup_phone = forms.CharField(required=True,label ='Номер для связи',help_text="Номер для связи")
 
     class Meta:
         model = Job
@@ -33,9 +33,9 @@ class JobCreateStep2Form(forms.ModelForm):
 
 
 class JobCreateStep3Form(forms.ModelForm):
-  delivery_address = forms.CharField(required=True)
-  delivery_name = forms.CharField(required=True)
-  delivery_phone = forms.CharField(required=True)
+  delivery_address = forms.CharField(required=True,label ='Адрес доставки посылки',help_text="Адрес доставки посылки")
+  delivery_name = forms.CharField(required=True,label ='Номер для связи',help_text="Номер для связи",)
+  delivery_phone = forms.CharField(required=True,label ='Номер для связи',help_text="Номер для связи",)
 
   class Meta:
     model = Job

@@ -130,7 +130,7 @@ def payout_method_page(request):
         if payout_form.is_valid():
             payout_form.save()
 
-            messages.success(request, "Payout address is updated.")
+            messages.success(request, "Данные для вывода изменены.")
             return redirect(reverse('courier:profile'))
 
     return render(request, 'courier/payout_method.html', {

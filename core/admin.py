@@ -55,9 +55,11 @@ def payout_to_courier(modeladmin, request, queryset):
         t.update(status=Transaction.OUT_STATUS)
       messages.success(request, "оплата произведенна успещно" % (payout.batch_header.payout_batch_id))
     else:
-      messages.error(request, payout.error)
+      pass
+      #messages.error(request, payout.error)
   except Exception as e:
-    messages.error(request, str(e))
+    pass
+    #messages.error(request, str(e))
 
 payout_to_courier.short_description = "Отправить вознаграждение"
 

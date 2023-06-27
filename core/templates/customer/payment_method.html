@@ -40,7 +40,7 @@
 
 {% if not request.user.customer.stripe_payment_method_id %}
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-  Давайте добавим вашу кредитную или дебетовую карту  <strong>Создать заказ</strong>!
+  Давайте добавим вашу кредитную или дебетовую карту чтобы <strong>Создать заказ</strong>!
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -102,7 +102,7 @@
         // Display error.message in your UI.
         toast(result.error.message, 'error');
       } else {
-        toast("Payment method is added", 'success');
+        toast("Карта успещно добавлена", 'success');
         window.location.reload();
         // The setup has succeeded. Display a success message.
       }
